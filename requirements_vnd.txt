@@ -1,0 +1,7 @@
+pytz
+babel
+google-api-python-client
+httplib2
+requests
+requests_oauthlib
+tweepy

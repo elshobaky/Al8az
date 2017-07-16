@@ -1,0 +1,4 @@
+cron:
+- description: reset today score
+  url: /tasks/resettodayscore
+  schedule: every 24 hours
