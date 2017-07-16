@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}
+    متع ذهنك
+{% endblock title %}
+
+{% block header_text %}     
+		
+{% endblock header_text %}
+
+
+{% block content %}
+{% if user %}
+    <div class="row">
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="info-box blue-bg">
+			<i class="c-all-icon"></i>
+			<div class="count">{{user.score or 0}}</div>
+			<div class="title">مجموع النقاط</div>						
+		</div><!--/.info-box-->			
+	</div><!--/.col-->
+	
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="info-box brown-bg">
+			<i class="c-today-icon"></i>
+			<div class="count">{{user.todayscore or 0}}</div>
+			<div class="title">نقاط اليوم</div>						
+		</div><!--/.info-box-->			
+	</div><!--/.col-->	
+	
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="info-box dark-bg">
+			<i class="fa fa-thumbs-o-up"></i>
+			<div class="count">{{user.q_solved or 0}}</div>
+			<div class="title">إجابات صحيحة</div>						
+		</div><!--/.info-box-->			
+	</div><!--/.col-->
+</div><!--/.row-->
+{% else %}
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	    <div class="side-badge home-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/gold.png"></img>
+				<div class="badge-title">البرنس</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="prince_url">
+						<span class="profile-ava">
+				            <img alt="" id="prince_avatar" src="/file/">
+				        </span>
+				        <span class="player-name" id="prince_name">
+				        </span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="prince_level"></strong>
+	                  </li>
+	                  <li>
+						<span>مجموع النقاط</span>
+	                    <strong id="prince_score"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="side-badge home-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/like.png"></img>
+				<div class="badge-title">الأكثر دقة</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="accurate_url">
+						<span class="profile-ava" >
+				            <img alt="" id="accurate_avatar" src="/file/">
+				        </span>
+				        <span class="player-name" id="accurate_name"></span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="accurate_level"></strong>
+	                  </li>
+	                  <li>
+						<span>الدقة</span>
+	                    <strong id="accurate_accuracy"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="side-badge home-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/star.png"></img>
+				<div class="badge-title">نجم اليوم</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="today_star_url">
+						<span class="profile-ava">
+				            <img alt="" id="today_star_avatar" src="/file/">
+				        </span>
+				        <span class="player-name" id="today_star_name"></span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="today_star_level"></strong>
+	                  </li>
+	                  <li>
+						<span>نقاط اليوم</span>
+	                    <strong id="today_star_todayscore"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div>
+	</div>
+</div>
+{% endif %}
+
+<div class="row">
+{% if full_quiz %}
+	<div class="col-lg-8 col-md-12">
+        {% for quiz in full_quiz %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2><i class="fa fa-map-marker red"></i><strong>لغز عشوائي</strong></h2>
+				</div>
+				<div class="panel-body" style="font-size:20px;">
+					تفاصيل اللغز : 
+					<ul class="list-group">
+					  	<li class="list-group-item">
+						  	{{quiz.details.replace('\n', '<br>') | safe}}
+					  	</li>
+				  	</ul>
+					
+					<p style="text-align:center;">
+			          <a class="btn btn-default btn-lg" href="/quiz/{{quiz.key.id()}}" >الإجابة
+			          </a>
+			        </p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endif %}
+{% if quizes %}
+	<div class="col-lg-4">
+        <section class="panel">
+            <header class="panel-heading">
+                أحدث الألغاز
+            </header>
+            {% for q in quizes %}
+                <div class="list-group">
+                    <a class="list-group-item " href="/quiz/{{q.key.id()}}">
+                        <h4 class="list-group-item-heading">{{q.title}}</h4>
+                        <p class="list-group-item-text">{{q.details[:50]}}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+{% endif %}
+ </div>
+
+{% if games %}
+    {% include 'games-code.html' %}
+{% endif %}
+
+{% endblock content %}

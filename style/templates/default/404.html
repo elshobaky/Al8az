@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    Page Not Found
+{% endblock %}
+
+{% block content %}
+
+	{% if user %}
+	    <div class="alert alert-danger" role="alert">
+	    	Opps! seems like this page dosn't exist or you don't have the right to view it . 
+	    </div>
+	{% endif %}
+	{% if doctor %}
+		<div class="alert alert-danger" role="alert">
+	    	Opps! seems like this page dosn't exist or you don't have the right to view it .
+	      {% if case_error %}
+	        You need to ask your patient to provide you with his log in data and
+	        <a href="/doctor/newpt" class="alert-link">enter them here</a>
+	      {% endif %} 
+	    </div>
+	{% endif %}
+
+	{% if not user %}
+	  {% if not doctor %}
+	    <div class="alert alert-danger" role="alert">
+	    	Opps! seems like this page dosn't exist or you don't have the right to view it . please, 
+	    	<a href="/user/login" class="alert-link">sign in</a> or 
+	    	<a href="/user/new" class="alert-link">register</a>  
+	    	if you don't have an account
+	    </div>
+	  {% endif %}
+	{% endif %}
+        
+{% endblock %}

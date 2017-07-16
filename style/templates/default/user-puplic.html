@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+    {{p_user.name.split()[0]}} {{p_user.name.split()[1]}} profile
+{% endblock title %}
+
+{% block content %}
+    Name : {{p_user.name}} <br>
+    Address : {{p_user.address}} <br>
+    Email : {{p_user.email}} <br>
+{% endblock content %}

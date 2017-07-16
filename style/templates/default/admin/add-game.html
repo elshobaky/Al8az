@@ -1,0 +1,68 @@
+<!---Head -->
+{% extends "admin/base.html" %}
+{% block title %}
+    إضافة لعبة
+{% endblock %}
+    
+{% block h %}
+    <i class="fa fa-laptop"></i>
+    إضافة لعبة
+{% endblock h %}
+<!---content-->
+{% block content %}
+        {% if done and done == 'yes' %}
+          <div class="alert alert-success" role="alert">تمت إضافة اللعبة بنجاح
+          <a href="/game/{{url}}" class="alert-link">مشاهدة النتيجة</a>
+          </div>
+        {% endif %}
+
+            
+              <form method="post" role="form" action="{{upload_url}}" enctype="multipart/form-data" accept-charset="UTF-8">
+
+                <div class="form-group">
+                  <label for="title">اسم اللعبة</label>
+                  <input class="form-control" type="text" name="title" id="title" value="{{title}}" required>
+                  {% if error_title %}
+                  <div class="alert alert-danger" role="alert">{{error_title}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="details">شرح اللعبة</label>
+                  <textarea class="form-control" type="text" name="details" id="details">{{details}}</textarea>
+                  {% if error_details %}
+                  <div class="alert alert-danger" role="alert">{{error_details}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="swf">ملف اللعبة</label>
+                  <input class="form-control" type="file" name="swf" id="swf" required>
+                  {% if error_swf %}
+                  <div class="alert alert-danger" role="alert">{{error_swf}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="img">اختر صورة للعبة</label>
+                  <input class="form-control" type="file" name="img" id="img" accept="image/*">
+                  {% if error_img %}
+                  <div class="alert alert-danger" role="alert">{{error_img}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="status">مفعَل</label>
+                  <input type="checkbox" class="form-control" name="status">
+                </div>
+
+
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">إضافة اللعبة</button>
+              </form>
+            
+            
+
+
+
+{% endblock content %}

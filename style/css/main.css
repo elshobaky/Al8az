@@ -1,0 +1,183 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Droid Arabic Kufi', serif;
+}
+p, div {
+    font-family: 'hacen_liner_screenregular','tahoma',serif;
+}
+
+.logo-img {
+  max-height: 45px;
+}
+
+.gameimg { 
+	width:190px; 
+	height:190px;
+	opacity: 1; 
+	filter: alpha(opacity=100); 
+	background: url(http://www.corelangs.com/css/box/img/duck.png) no-repeat; 
+} 
+.gameimg:hover { 
+	opacity: 0.3; 
+	filter: alpha(opacity=30);
+} 
+
+/* games image style */
+
+ul.img-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+ul.img-list li {
+  display: inline-block;
+  height: 150px;
+  margin: 0 1em 1em 0;
+  position: relative;
+  width: 150px;
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 150px;
+}
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 150px;
+  opacity: 0;
+}
+
+ul.img-list li:hover span.text-content {
+  opacity: 1;
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 150px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+/* end games image style */
+
+.c-all-icon {
+  background: url(/style/images/morecoins.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.c-today-icon {
+  background: url(/style/images/coins.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/*  loading icon css */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+
+#loading {max-height: 40px;}
+
+/* badges */
+
+.side-badges {
+  background-color: #D1DAD6;
+  margin-bottom: 30px;
+}
+.home-badge {
+  margin-bottom: 30px;
+}
+.side-badge {
+  min-height: 110px;
+  background-color: #D1DAD6;
+  text-align: center;
+}
+
+.badge-i, .badge-data {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.badge-i {
+  padding-left: 10px;
+  padding-right: 10px;
+  float: right;
+}
+.badge-img {
+  max-height: 70px;
+}
+.player-name {
+  font-size: 12px;
+}
+.badge-score ul {
+  list-style: none;
+}
+.badge-score ul li {
+  display: block;
+  width: 35%;
+  float: right;
+}
+.badge-score ul li:first-child {
+  border-left: 1px solid #f5f5f5;
+}
+.badge-score ul li strong {
+  display: block;
+  font-size: 20px;
+}
+.badge-score ul li span {
+  color: #2C4C6F;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 10px;
+
+}
+
+@media (max-width: 640px) {
+  #top_menu  {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) and (min-width: 326px) {
+  #main-content {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 325px) and (min-width:320px) {
+  #main-content {
+    padding-top: 85px;
+  }
+}

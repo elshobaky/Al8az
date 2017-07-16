@@ -1,0 +1,39 @@
+<div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+            </div>
+
+            <!--logo start-->
+            <a href="/" class="logo">ألغاز</a>
+            <!--logo end-->
+
+            <div class="nav search-row" id="top_menu">
+                <!--  search form start 
+                <ul class="nav top-menu">                    
+                    <li>
+                        <form class="navbar-form" action="/search">
+                            <input class="form-control" placeholder="Search" name="q" type="text">
+                        </form>
+                    </li>                    
+                </ul>
+                  search form end -->                
+            </div>
+
+            <div class="top-nav notification-row">                
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    
+                    <!-- task notificatoin start -->
+                    {% include 'admin/header/task-notification.html' %}
+                    <!-- task notificatoin end -->
+                    <!-- inbox notificatoin start-->
+                    {% include 'admin/header/inbox-notification.html' %}
+                    <!-- inbox notificatoin end -->
+                    <!-- alert notification start-->
+                    {% include 'admin/header/alert-notification.html' %}
+                    <!-- alert notification end-->
+                    <!-- user login dropdown start-->
+                    {% include 'admin/header/user-login.html' %}
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>

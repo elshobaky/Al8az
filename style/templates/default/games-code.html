@@ -1,0 +1,12 @@
+<ul class="img-list">
+	{% for game in games %}
+		<li>
+		    <a href="/game/{{game.key.id()}}">
+			    <img src="{{'/file/'~game.img}}" width="150" height="150" />
+		        <span class="text-content">
+			        <span>{{game.title}}</span>
+			    </span>
+		    </a>
+		</li>
+	{% endfor %}
+</ul>

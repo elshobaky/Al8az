@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %} {{p_user.nickname}} {% endblock title %}
+{% block page %}
+
+<div class="row">
+  <!-- profile-widget -->
+  <div class="col-lg-12">
+    <div class="profile-widget profile-widget-info">
+      <div class="panel-body">
+        <div class="col-lg-2 col-sm-2">
+          <h4>{{p_user.nickname}}</h4>               
+          <div class="follow-ava">
+              <img src="{{'/file/download/'~p_user.avatar}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 follow-info">
+            <!-- <p>{{p_user.about or ''}}</p> -->
+          {% if p_user.contact.f %}
+            <p><a href="{{p_user.contact.f}}" id="profile-connect"><i class="fa fa-facebook"></i></a></p>
+          {% endif %}
+          {% if p_user.contact.t %}
+            <p><a href="{{p_user.contact.t}}" id="profile-connect"><i class="fa fa-twitter"></i></a></p>
+          {% endif %}
+          {% if p_user.contact.g %}
+            <p><a href="{{p_user.contact.g}}" id="profile-connect"><i class="fa fa-google-plus"></i></a></p>
+          {% endif %}
+          {% if p_user.contact.i %}
+            <p><a href="{{p_user.contact.i}}" id="profile-connect"><i class="fa fa-instagram"></i></a></p>
+          {% endif %}
+            
+            
+        </div>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                  <ul>
+                      <li class="active">
+                          
+                          <i class="fa fa-usd fa-2x"> </i><br>
+                          {% set score = p_user.score or 0 %}
+                            {{score}}<br>
+                          {% if score <= 10 %}
+                              نقاط
+                          {% else %}نقطة{% endif %}
+                            
+                      </li>   
+                  </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category">
+          <ul>
+              <li class="active">
+                  <i class="fa fa-thumbs-o-up fa-2x"> </i><br>
+                  {{p_user.q_solved or 0}}<br>إجابات صحيحة 
+              </li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category">
+          <ul>
+              <li class="active"> 
+                <i class="fa fa-tachometer fa-2x"> </i><br>
+                    المستوى<br>
+                {{ p_user.q_solved / 20 }}
+
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+              <!-- page start-->
+              <div class="row">
+                 <div class="col-lg-12">
+                    <section class="panel">
+                          <header class="panel-heading tab-bg-info">
+                              <ul class="nav nav-tabs">
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#recent-activity">
+                                          <i class="icon-home"></i>
+                                          الأنشطة اليومية
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a data-toggle="tab" href="#profile">
+                                          <i class="icon-user"></i>
+                                          معلومات الحساب
+                                      </a>
+                                  </li>
+                              </ul>
+                          </header>
+                          <div class="panel-body profile-panel-body">
+                              <div class="tab-content">
+                                <!-- recent activities -->
+                                {% include 'puplic-profile/recent-activities.html' %}
+                                <!-- profile info -->
+                                {% include 'puplic-profile/profile-info.html' %}
+                                <!-- edit-profile -->
+                              </div>
+                          </div>
+                      </section>
+                 </div>
+              </div>
+
+              <!-- page end-->
+{% endblock page %}
+
+{% block endjs %}
+    <script type="text/javascript">
+       var uid = {{uid}};
+    </script>
+    <script type="text/javascript" src="/style/js/puplic-profile.js"></script>
+{% endblock endjs %}

@@ -1,0 +1,41 @@
+{% if user %}
+<li class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <span class="profile-ava">
+            <img alt="" src="{{'/file/download/'~user.avatar}}">
+        </span>
+        <span class="username">{{user.nickname}}</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu extended logout">
+        <div class="log-arrow-up"></div>
+        <li class="eborder-top">
+            <a href="/user/profile"><i class="icon_profile"></i>الصفحة الشخصية</a>
+        </li>
+        <li>
+            <a href="/user/logout"><i class="icon_key_alt"></i>خروج</a>
+        </li>
+        
+    </ul>
+</li>
+{% else %}
+<li>
+   <a href="/user/login" id="login_fancy">تسجيل الدخول</a>
+   
+</li>
+<li>
+   <a href="/user/signup" id="signup_fancy">حساب جديد</a>
+</li>
+{% block endjs %}
+    <script type="text/javascript">
+        var ref = document.URL;
+        var url ="?ajax=t&ref=" + ref
+        var login =  $('#login_fancy').attr("href") + url
+        var signup =  $('#signup_fancy').attr("href") + url
+        $('#login_fancy').attr("href", login)
+        $('#signup_fancy').attr("href", signup)
+    </script>
+{% endblock endjs %}
+
+{% endif %}
+

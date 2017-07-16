@@ -1,0 +1,178 @@
+
+
+<div class="col-lg-3 side-bar-3">
+	<div class="col-md-12 side-badges">
+	{% if not home or (home and user) %}
+		<div class="side-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/gold.png"></img>
+				<div class="badge-title">البرنس</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="prince_url">
+						<span class="profile-ava">
+				            <img alt="" id="prince_avatar" src="/file/download/">
+				        </span>
+				        <span class="player-name" id="prince_name">
+				        </span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="prince_level"></strong>
+	                  </li>
+	                  <li>
+						<span>مجموع النقاط</span>
+	                    <strong id="prince_score"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div><hr>
+		<div class="side-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/like.png"></img>
+				<div class="badge-title">الأكثر دقة</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="accurate_url">
+						<span class="profile-ava" >
+				            <img alt="" id="accurate_avatar" src="/file/download/">
+				        </span>
+				        <span class="player-name" id="accurate_name"></span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="accurate_level"></strong>
+	                  </li>
+	                  <li>
+						<span>الدقة</span>
+	                    <strong id="accurate_accuracy"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div><hr>
+		<div class="side-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/star.png"></img>
+				<div class="badge-title">نجم اليوم</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="today_star_url">
+						<span class="profile-ava">
+				            <img alt="" id="today_star_avatar" src="/file/download/">
+				        </span>
+				        <span class="player-name" id="today_star_name"></span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="today_star_level"></strong>
+	                  </li>
+	                  <li>
+						<span>نقاط اليوم</span>
+	                    <strong id="today_star_todayscore"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div><hr>
+	{% endif %}	
+		<div class="side-badge" id="side-badge">
+			<div class="badge-i">
+				<img class="badge-img" src="/style/img/gaming.png"></img>
+				<div class="badge-title">ملك الألعاب</div>
+			</div>
+			<div class="badge-data">
+				<div class="player_info">
+					<a href="/user/" id="games_king_url">
+						<span class="profile-ava">
+				            <img alt="" id="games_king_avatar" src="/file/download/">
+				        </span>
+				        <span class="player-name" id="games_king_name"></span></a>
+				</div>
+				<div class="badge-score">
+					<ul>
+	                  <li>
+						<span>المستوى</span>
+	                    <strong id="games_king_level"></strong>
+	                  </li>
+	                  <li>
+						<span>مرات اللعب</span>
+	                    <strong id="games_king_g_play"></strong>
+	                  </li>
+					</ul>
+				</div>
+			</div>						
+		</div>	
+	</div>
+
+    
+	<div class="col-md-12 side-social">
+		<div class="social-box facebook">
+			<a target="_blank" href="https://www.facebook.com/al8azcom">
+				<i class="fa fa-facebook"></i>
+			</a>
+			<ul>
+				<li>
+					<strong id="facebook_count"></strong>
+					<span>Likes</span>
+				</li>
+				<li style="margin-top:10px;">
+					<div class="fb-like" data-href="https://www.facebook.com/al8azcom" data-layout="button" data-action="like" data-show-faces="false" data-share="false" height="70"></div>
+					<div class="fb-follow" data-href="https://www.facebook.com/al8azcom" data-colorscheme="light" data-layout="button" data-show-faces="true"></div>
+
+				</li>
+			</ul>
+		</div><!--/social-box-->
+	</div>
+	<div class="col-md-12 side-social">
+		
+		<div class="social-box google-plus">
+			<a target="_blank" href="//plus.google.com/u/0/118064797796413637139">
+				<i class="fa fa-google-plus"></i>
+			</a>
+			<ul>
+				<li>
+					<strong id="g_count"></strong>
+					<span>followers</span>
+				</li>
+				<li style="margin-top:10px;">
+					<div class="g-follow" data-annotation="none" data-height="24" data-href="//plus.google.com/u/0/118064797796413637139" data-rel="publisher"></div>
+				</li>
+			</ul>
+		</div><!--/social-box-->			
+		
+	</div><!--/col-->
+	<div class="col-md-12 side-social">
+		
+		<div class="social-box twitter">
+			<a target="_blank" href="https://twitter.com/al8azcom">
+				<i class="fa fa-twitter"></i>
+			</a>
+			<ul>
+				<li>
+					<strong id="twitter_count"></strong>
+					<span>followers</span>
+				</li>
+				<li style="margin-top:10px;">
+					<a class="twitter-follow-button"
+					  href="https://twitter.com/al8azcom"
+					  data-size="large" data-show-count="false"
+					  data-show-screen-name="false">
+					متابعة</a>
+				</li>
+			</ul>
+		</div><!--/social-box-->							
+	</div><!--/col-->
+	
+
+</div>

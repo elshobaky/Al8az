@@ -1,0 +1,77 @@
+<!---Head -->
+{% extends "admin/base.html" %}
+{% block title %}
+    تعديل لغز
+{% endblock %}
+
+{% block h %}
+    <i class="fa fa-laptop"></i>
+    تعديل لغز
+{% endblock h %}  
+
+<!---content-->
+{% block content %}
+
+              <form method="post" role="form">
+
+                <div class="form-group">
+                  <label for="title">اسم اللغز</label>
+                  <input class="form-control" type="text" name="title" id="title" value="{{quiz.title}}">
+                  {% if error_title %}
+                  <div class="alert alert-danger" role="alert">{{error_title}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="details">تفاصيل اللغز</label>
+                  <textarea class="form-control" type="text" name="details" id="details" required>{{quiz.details}}</textarea>
+                  {% if error_details %}
+                  <div class="alert alert-danger" role="alert">{{error_details}}</div>
+                  {% endif %}
+                </div>
+
+                {% for i in range(1,6) %}
+                    <div class="form-group">
+                      <label for="answer{{i}}">الإجابة رقم {{i}}</label>
+                      <input class="form-control" type="text" name="answer{{i}}" id="answer{{i}}" value="{{quiz.answers[i-1].text}}">
+                    </div>
+                {% endfor %}
+
+                
+
+                <div class="form-group">
+                    <label for="true_a">رقم الإجابة الصحيحة</label>
+                          <select class="form-control" name="true_a">
+                            <option selected="selected" value="{{t_a}}">{{t_a}}</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="explain">شرح الإجابة</label>
+                  <textarea class="form-control" type="text" name="explain" id="explain">{{quiz.explain}}</textarea>
+                  {% if error_explain %}
+                  <div class="alert alert-danger" role="alert">{{error_explain}}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <label for="status">مفعَل</label>
+                  <input type="checkbox" class="form-control" name="status"{%if quiz.status == 1%} checked{% endif %}>
+                </div>
+
+                <input type='hidden' name='quiz_id' value='{{quiz.key.id()}}'>
+
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">تعديل اللغز</button>
+              </form>
+            
+            
+
+
+
+{% endblock content %}

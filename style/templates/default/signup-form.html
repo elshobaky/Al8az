@@ -1,0 +1,154 @@
+{% block css %}
+<link rel="stylesheet" href="/style/css/formoid-solid-green.css" type="text/css" />
+{% endblock css %}
+
+<form class="formoid-solid-green" style="background-color:#333;font-size:14px;color:#34495E;max-width:800px;min-width:150px" method="POST" action="/signup" id="signup_form" role="form">
+  <div class="title">
+      <h2 style="text-align:center;">حساب جديد</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="form-group">
+        <label class="sr-only" for="firstname">الاسم الأول</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="icon_profile"></i>
+          </div>
+          <input class="form-control" type="text" name="firstname" id="firstname" value="{{firstname}}" placeholder="الاسم الأول" required>
+        </div>
+
+          <label class="sr-only" for="lastname">الاسم الأخير</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="icon_profile"></i>
+            </div>
+            <input class="form-control" type="text" name="lastname" id="lastname" value="{{lastname}}" placeholder="الاسم الأخير" required>
+        </div>
+        <div class="alert alert-danger signup_error" id="error_name" role="alert" style="display:none"></div>
+        {% if error_name %}
+        <div class="alert alert-danger" role="alert">{{error_name}}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label class="sr-only" for="email">البريد الإلكترونى</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="icon_mail_alt"></i>
+          </div>
+          <input class="form-control" type="email" name="email" id="email" value="{{email}}" placeholder="البريد الإلكتروني" required>
+        </div>
+        <div class="alert alert-danger signup_error" id="error_email" role="alert" style="display:none"></div>
+        {% if error_email %}
+        <div class="alert alert-danger" role="alert">{{error_email}}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label class="sr-only" for="password">كلمة المرور</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+             <i class="icon_lock"></i>
+          </div>
+          <input class="form-control" type="password" name="password" id="password" value="" placeholder="كلمة المرور" required>
+        </div>
+        <div class="alert alert-danger signup_error" id="error_password" role="alert" style="display:none"></div>
+        {% if error_password %}
+        <div class="alert alert-danger" role="alert">{{error_password}}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label class="sr-only" for="verify">أعد إدخال كلمة المرور</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+             <i class="icon_lock"></i>
+          </div>
+          <input class="form-control" type="password" name="verify" id="verify" value="" placeholder="أعد إدخال كلمة المرور" required>
+        </div>
+        <div class="alert alert-danger signup_error" id="error_verify" role="alert" style="display:none"></div>
+        {% if error_verify %}
+        <div class="alert alert-danger" role="alert">{{error_verify}}</div>
+        {% endif %}
+      </div>
+      <div class="submit" id="signup_submit">
+          <input type="submit" value="تسجيل"/>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <a href="{{login_url}}">
+          <img src="/style/img/sign-in-with-google.png" style="max-width:100%; height:auto; display:block;">
+      </a>
+    </div>
+  </div>
+</form>
+  
+
+            
+{% block endjs %}
+<script type="text/javascript">
+$(document).ready(function() {
+
+    // process the form
+    $('#signup_form').submit(function(event) {
+
+        $('#signup_form').append('<img src="/style/img/loader.gif" id="loading">');
+        $('.signup_error').css('display','none');
+        var formData = {
+            'firstname'   : $('input[name=firstname]').val(),
+            'lastname'    : $('input[name=lastname]').val(),
+            'email'       : $('input[name=email]').val(),
+            'password'    : $('input[name=password]').val(),
+            'verify'      : $('input[name=verify]').val(),
+            'ajax'        : 't'
+        };
+        $.ajax({
+            type        : 'POST', 
+            url         : '/user/signup', 
+            data        : formData, 
+            dataType    : 'json', 
+            encode      : true
+        })
+            .done(function(data) {
+                console.log(data)
+            $('#loading').remove();
+            if (data.signup===true) {
+                if (window.location.href.search('/signup')===-1) {
+                    window.location.reload();
+                }
+                else {
+                    if (document.referrer.search('/signup')===-1) {
+                        window.location.href = document.referrer;
+                    }
+                    else {
+                       window.location.href = '/';
+                    }
+                    
+                }
+            }
+            else {
+                if (data.error_name) {
+                  $('#error_name').text(data.error_name);
+                  $('#error_name').toggle();
+                }
+                if (data.error_email) {
+                  $('#error_email').text(data.error_email);
+                  $('#error_email').toggle();
+                }
+                if (data.error_password) {
+                  $('#error_password').text(data.error_password);
+                  $('#error_password').toggle();
+                }
+                if (data.error_verify) {
+                  $('#error_verify').text(data.error_verify);
+                  $('#error_verify').toggle();
+                }
+              }
+            });
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+});
+</script>
+
+{% endblock endjs %}

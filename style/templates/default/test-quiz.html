@@ -1,0 +1,50 @@
+<section class="panel" id="quiz_panel">
+	<header class="panel-heading">
+			{{n+1}} - لغز : {% if q.title == '' %}
+				     {{q.details[:40]}}
+			    {% else %}
+				     {{q.title}}
+				{% endif %}
+		{% if admin %}
+	      	<a href="/admin/editquiz/{{q.key.id()}}" style="text-align:left;">تعديل</a>
+      	{% endif %}
+	</header>
+	<div class="panel-body">
+		<div class="col-md-7">	
+			<p style="font-size:18px;">
+				{{q.details.replace('\n', '<br>') | safe}}
+			</p>	
+		</div>  	
+		<div class="col-md-5">	 			
+			{% if q.answers[0].text != '' and q.answers[1].text=='' and q.answers[2].text=='' and q.answers[3].text=='' and q.answers[4].text=='' %}
+				<div class="form-group">
+				  <div class="col-lg-12">
+				    <input name="{{n}}" type="text" placeholder="اكتب الإجابة .." class="form-control" data-qid="{{q.key.id()}}" data-qtitle="{{q.title}}" required>  
+				  </div>
+				</div>
+			{% else %}
+				<div class="form-group">
+				{% for a in q.answers %}
+					{% if a.text == '' %}
+					{% else %}
+				  	<div class="radio">
+					  <label style="font-size: 16px;">
+					    <input type="radio" name="{{n}}" value="{{a.no}}" data-qid="{{q.key.id()}}" data-qtitle="{{q.title}}">
+					    {{a.text}}
+					  </label>
+					</div>
+					{% endif %}
+				{% endfor %}
+			    </div>
+			{% endif %}
+		</div>
+		
+		<div class="row"><div class="col-lg-12">
+		    <p>{% include 'social.html' %}</p>
+			<p style="text-align:center;" id="new_quiz">
+				<button id="new_quiz_btn" class="btn btn-lg" style="margin:0px auto;">لغز جديد</button>
+				<br>
+			</p>
+		</div></div>
+	</div>
+</section>

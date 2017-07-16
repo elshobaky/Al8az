@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://www.al8az.ga/games/rss</id>
+  <title>ألغاز</title>
+  <link rel="self" href="http://www.al8az.ga/games/rss" type="application/atom+xml" />
+{% for g in game %}
+  <entry>
+    <title>{{g.title}}</title>
+    <category term="ألعاب ذكاء"/> 
+    <id>http://www.al8az.ga/game/{{g.key.id()}}</id>
+    <link href="http://www.al8az.ga/game/{{g.key.id()}}"/>
+    <summary>{{g.details[:150]}}</summary>
+    <content>{{g.details}}</content>
+  </entry>
+{% endfor %}
+</feed>

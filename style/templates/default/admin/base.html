@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ألغاز | {% block title %}{% endblock title %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{% endblock description %} اختبر قدراتك فى المنطق والرياضيات وقدرتك على الاستنتاج بألغاز جديدة كل يوم">
+    <meta name="author" content="ألغاز">
+    <meta name="keyword" content="ألغاز ,ألعاب ذكاء,أسئلة ذكاء,اختبارات ألغاز,اختبار ذكاء,تحدى العقل">
+
+    <link rel="stylesheet" href="/style/css/bootstrap-arabic.min.css">
+    <link rel="stylesheet" href="/style/css/bootstrap-arabic-theme.min.css">
+    <link href="http://cdn.jsdelivr.net/darfonts/0.1/liner/stylesheet.css" rel="stylesheet">
+    <!-- font icon -->
+    <link href="/style/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/style/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/style/css/fullcalendar.css">
+    <link href="/style/css/widgets.css" rel="stylesheet">
+    <link href="/style/css/style.css" rel="stylesheet">
+    <link href="/style/css/style-responsive.css" rel="stylesheet" />
+    <link href="/style/css/xcharts.min.css" rel=" stylesheet"> 
+    <link href="/style/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/css/main.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="/style/js/html5shiv.js"></script>
+      <script src="/style/js/respond.min.js"></script>
+      <script src="/style/js/lte-ie7.js"></script>
+    <![endif]-->
+    
+    {% block css %} {% endblock css %}
+    
+    
+    {% block js %} {% endblock js %}
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "1e1f1aba-64b8-4e48-a68d-959dc2d50b5a", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+    
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+    <header class="header dark-bg">
+      {% include 'google-search.html' %}
+      {% include 'admin/header.html' %}
+    </header>
+    <!--header end-->
+    <!--sidebar start-->
+    {% include 'admin/sidebar.html' %}
+    <!--sidebar end-->
+          
+    <!-- content -->
+    <!--main content start-->
+    <section id="main-content"  style="padding-right:10px;">
+      <section class="wrapper">
+        <div class="row">
+        <div class="col-lg-12">
+          <h3 class="page-header">{% block h %}{% endblock h %}</h3>
+        </div>
+      </div>
+      <div class="row">
+        {% if page %}
+          {% block page %} {% endblock page %}
+        {% else %}
+          <div class="row">
+            <!--start content -->
+            <div class="col-lg-9 col-md-12">
+              {% block content %} {% endblock content %}
+            </div>
+            <!--end content -->
+            <!--lt sidebar start-->
+            {% include 'admin/rt-sidebar.html' %}
+            <!--lt sidebar end-->
+          </div>
+        {% endif %}
+      </div>
+        
+      </section>
+    </section> 
+  </section>
+             
+          
+<!-- javascripts -->
+    <script src="/style/js/jquery.js"></script>
+  <script src="/style/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/style/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/style/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/style/js/bootstrap-arabic.min.js"></script>
+    <!-- nice scroll -->
+    <script src="/style/js/jquery.scrollTo.min.js"></script>
+    <script src="/style/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <script src="/style/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="/style/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="/style/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="/style/js/owl.carousel.js" ></script>
+    <!-- jQuery full calendar -->
+    <<script src="/style/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+  <script src="/style/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="/style/js/calendar-custom.js"></script>
+  <script src="/style/js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="/style/js/jquery.customSelect.min.js" ></script>
+  <script src="/style/assets/chart-master/Chart.js"></script>
+   
+    <!--custome script for all page-->
+    <script src="/style/js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="/style/js/sparkline-chart.js"></script>
+    <script src="/style/js/easy-pie-chart.js"></script>
+  <script src="/style/js/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="/style/js/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="/style/js/xcharts.min.js"></script>
+  <script src="/style/js/jquery.autosize.min.js"></script>
+  <script src="/style/js/jquery.placeholder.min.js"></script>
+  <script src="/style/js/gdp-data.js"></script>  
+  <script src="/style/js/morris.min.js"></script>
+  <script src="/style/js/sparklines.js"></script>  
+  <script src="/style/js/charts.js"></script>
+  <script src="/style/js/jquery.slimscroll.min.js"></script>
+  <script>
+
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw' : function () { 
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+          $("#owl-slider").owlCarousel({
+              navigation : true,
+              slideSpeed : 300,
+              paginationSpeed : 400,
+              singleItem : true
+
+          });
+      });
+
+      //custom select box
+
+      $(function(){
+          $('select.styled').customSelect();
+      });
+    
+    /* ---------- Map ---------- */
+  $(function(){
+    $('#map').vectorMap({
+      map: 'world_mill_en',
+      series: {
+        regions: [{
+          values: gdpData,
+          scale: ['#000', '#000'],
+          normalizeFunction: 'polynomial'
+        }]
+      },
+    backgroundColor: '#eef3f7',
+      onLabelShow: function(e, el, code){
+        el.html(el.html()+' (GDP - '+gdpData[code]+')');
+      }
+    });
+  });
+
+
+
+  </script>
+  {% if not page %}
+    <script type="text/javascript">
+      $.ajax({
+        type   : 'GET',
+        url    : '/ajax/admingetcount',
+        encode : true
+        })
+      .done(function(data) {
+        //console.log(data)
+        $('#q').text(data.q);
+        $('#q_pup').text(data.q_pup);
+        $('#g').text(data.g);
+        $('#g_pup').text(data.g_pup);
+        $('#u').text(data.u);
+      })
+    </script>
+{% endif %}
+        
+</body>
+</html>
+</body>
+</html>
+

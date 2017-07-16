@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+    اختبار مخصص
+{% endblock %}
+    
+
+<!---content-->
+{% block content %}
+
+        <form method="post" role="form">
+        <div class="form-group">
+                    <label for="q_no">عدد الأسئلة</label>
+                          <select class="form-control" name="q_no">
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                          </select>
+                </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">ابدأ الاختبار</button>
+      </form>
+      
+{% endblock content %}

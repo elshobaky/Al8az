@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}تسجيل الدخول{% endblock title %}
+{% block js %}
+    <script type="text/javascript" src="https://apis.google.com/js/client:platform.js?onload=start"></script>
+{% endblock js %}
+{% block page %}
+    <div id="signinButton">
+    	<span class="g-signin"
+    		data-scope="openid"
+    		data-clientid="829825867208-jldfcptrf6iak0ilbpsi7ai893715g83.apps.googleusercontent.com"
+    		data-redirecturi="postmessage"
+    		data-accesstype="offline"
+    		data-cookiepolicy="single_host_origin"
+    		data-callback="signInCallback"
+    		data-approvalprompt="force">
+    	</span>
+    </div>
+    <div id="result"></div>
+{% endblock page %}
+
+{% block endjs %}
+    <script >
+        function signInCallback(authResult) {
+        	if (authResult['code']) {
+        		$('#signinButton').attr('style', 'display:none');
+        		$.ajax({
+        			type: 'POST',
+        			url: '/login/google?state={{STATE}}',
+        			processData: false,
+        			contentType: 'application/octet-stream; charset=utf-8',
+        			success: function(result) {
+        				if (result) {
+        					$('#result').html('login Successful!</br>'+result+'</br>Redirecting...')
+        					setTimeout(function(){
+        						window.location.href = "/";
+        					}, 4000);
+        				} else if (authResult['error']) {
+        					console.log('There was an error'+authResult['error']);
+        				} else {
+        					$('#result').html('Failed to make a server side call. chaeck you configuration and console');
+        				}
+        			}
+        		})
+        	}
+        }
+    </script>
+{% endblock endjs %}

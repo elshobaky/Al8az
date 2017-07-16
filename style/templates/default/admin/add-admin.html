@@ -1,0 +1,29 @@
+<!---Head -->
+{% extends "admin/base.html" %}
+{% block title %}
+    إضافة مدير
+{% endblock %}
+{% block h %}
+    <i class="fa fa-laptop"></i>
+    إضافة مدير
+{% endblock h %}
+    
+
+<!---content-->
+{% block content %}
+        {% if done and done == 'yes' %}
+          <div class="alert alert-success" role="alert">تمت إضافة المدير بنجاح</div>
+        {% endif %}
+
+        <form method="post" role="form">
+        <div class="form-group">
+           <label for="exampleInputID">البريد الإلكترونى</label><input class="form-control" id="exampleInputID" type="text" name="email" value="{{email}}" placeholder="ex. yourname@website.com" required>
+        </div>
+        {% if error and error == 'yes' %}
+        <div class="alert alert-danger" role="alert">هذا البريد الإلكترونى لا ينتمى لأى حساب</div>
+        {% endif %}
+        
+        <button type="submit" class="btn btn-lg btn-primary btn-block">إضافة مدير</button>
+      </form>
+      
+{% endblock content %}

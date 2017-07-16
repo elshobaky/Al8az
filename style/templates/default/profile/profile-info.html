@@ -1,0 +1,28 @@
+<div id="profile" class="tab-pane">
+  <section class="panel">
+    <div class="bio-graph-heading">
+              {{user.about or ''}}
+    </div>
+    <div class="panel-body bio-graph-info">
+        <h1>البينات الشخصية</h1>
+        <div class="row">
+            <div class="bio-row">
+                <p><span>الاسم الأول </span>: {{user.firstname or user.name}} </p>
+            </div>
+            <div class="bio-row">
+                <p><span>الاسم الأخير </span>: {{user.lastname or user.name}}</p>
+            </div>                                              
+            <div class="bio-row">
+                <p><span>الدولة </span>: <span class="bfh-countries" data-country="{{user.country or country or 'Eg'}}" data-flags="true"></span></p>
+            </div>
+            <div class="bio-row">
+                <p><span>البريد الإلكتروني </span>: {{user.email}}</p>
+            </div>
+        </div>
+    </div>
+  </section>
+    <section>
+        <div class="row">                                              
+        </div>
+    </section>
+</div>

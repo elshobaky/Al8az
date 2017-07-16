@@ -1,0 +1,52 @@
+<div id="sidebar" class="nav-collapse ">
+  <ul class="sidebar-menu">    
+  {% if admin %}
+        <li class="first">
+            <a href="/admin">
+                <i class="icon_house_alt"></i>
+                <span>لوحة التحكم</span>
+            </a>
+        </li>
+  {% endif %}
+      <li class="first">
+          <a href="/">
+              <i class="icon_house_alt"></i>
+              <span>الرئيسية</span>
+          </a>
+      </li>
+      <li>
+        <a href="/games" class="">
+          <i class="icon_puzzle"></i>
+          <span>ألعاب ذكاء</span>
+        </a>
+      </li>
+      <li>
+        <a href="/test" class="">
+          <i class="icon_pencil"></i>
+          <span>اختبار جديد</span>
+        </a>
+      </li>
+      <li>
+        <a href="/customtest" class="">
+          <i class="icon_book_alt"></i>
+          <span>اختبار مخصص</span>
+        </a>
+      </li>
+      <li>
+        <a href="/randomquiz" class="">
+          <i class="icon_question"></i>
+          <span>سؤال عشوائى</span>
+        </a>
+      </li>
+        
+        
+  {% if user %}
+      <li>
+        <a href="/user/profile" class="">
+          <i class="icon_contacts_alt"></i>
+          <span>حسابي</span>
+        </a>
+      </li>
+  {% endif %}
+  </ul>
+</div>

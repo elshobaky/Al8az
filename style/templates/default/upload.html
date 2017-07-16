@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}رفع ملف {% endblock title %}
+{% block content %}
+    <form method="POST" role="form"  action="{{upload_url}}" enctype="multipart/form-data">
+	    <div class="form-group">
+		    <label for="file">اختر ملف من جهازك</label>
+	    	<input class="form-control" type="file" name="file" id="file">
+	    </div>
+    	
+    	<button type="submit" class="btn btn-lg btn-primary">رفع الملف</button>
+    </form>
+{% endblock content %}

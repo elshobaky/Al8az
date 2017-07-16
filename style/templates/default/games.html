@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+	    ألعاب ذكاء
+{% endblock title %}
+
+{% block header_text %}     
+		
+{% endblock header_text %}
+
+
+{% block content %}
+
+{% include 'games-code.html' %}
+    <br>
+	    <ul class="pagination  pagination-lg">
+		    {% set n = 1 %}
+		    {% for i in range(count) %}
+			    {% if n == p %}
+				    <li class="active"><a href="/games?p={{n}}">{{n}}</a></li>
+				{% else %}
+				    <li><a href="/games?p={{n}}">{{n}}</a></li>
+				{% endif %}
+				{% set n = n+1 %}
+			{% endfor %}
+		</ul>
+
+	
+{% endblock content %}

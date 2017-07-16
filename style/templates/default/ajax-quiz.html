@@ -1,0 +1,131 @@
+
+	<header class="panel-heading">
+			لغز : {% if quiz.title == '' %}
+				     {{quiz.details[:40]}}
+			    {% else %}
+				     {{quiz.title}}
+				{% endif %}
+		{% if admin %}
+	      	<a href="/admin/editquiz/{{quiz.key.id()}}" style="text-align:left;">تعديل</a>
+      	{% endif %}
+	</header>
+	<div class="panel-body">
+		<div class="col-md-7">	
+			<p style="font-size:18px;">
+				{{quiz.details.replace('\n', '<br>') | safe}}
+			</p>
+				
+		</div>
+		
+				  	
+		<div class="col-md-5">	 	
+					
+				{% if quiz.answers[0].text != '' and quiz.answers[1].text=='' and quiz.answers[2].text=='' and quiz.answers[3].text=='' and quiz.answers[4].text=='' %}
+					<form method="POST" class="form-horizontal" action="/ajax/checkquizanswer" role="form" id="quiz">
+						<div class="form-group">
+						  <div class="col-lg-12">
+						    <input id="u_answer" name="u_answer" type="text" placeholder="اكتب الإجابة .." class="form-control" data-qid="{{quiz.key.id()}}" data-qtitle="{{quiz.title}}" required>  
+						  </div>
+						</div>
+						<input type="hidden" name="quiz_id" value="{{quiz.key.id()}}">
+						<button type="submit" class="btn btn-success" id="quiz_btn">تحقق من الإجابة</button>
+					</form>
+					
+				{% else %}
+					<form method="POST" class="form-horizontal" action="/ajax/checkquizanswer" role="form" id="quiz" style="padding-right:30px;">
+						<div class="form-group">
+						{% for a in quiz.answers %}
+							{% if a.text == '' %}
+							{% else %}
+						  	<div class="radio">
+							  <label style="font-size: 16px;">
+							    <input type="radio" name="u_answer" id="u_answer" value="{{a.no}}" data-qid="{{quiz.key.id()}}" data-qtitle="{{quiz.title}}">
+							    {{a.text}}
+							  </label>
+							</div>
+							{% endif %}
+						{% endfor %}
+					    </div>
+					    <input type="hidden" name="quiz_id" value="{{quiz.key.id()}}">
+						<button type="submit" class="btn btn-success" id="quiz_btn">تحقق من الإجابة</button>
+						
+					</form>
+			{% endif %}
+		</div>
+		
+		<div class="row"><div class="col-lg-12">
+		    <p>{% include 'social.html' %}</p>
+			<p style="text-align:center;" id="new_quiz">
+				<button id="new_quiz_btn" class="btn btn-lg" style="margin:0px auto;">لغز جديد</button>
+				<br>
+			</p>
+		</div></div>
+	</div>
+
+
+
+  <script type="text/javascript">
+        var new_url = '/quiz/' + $('input[name=u_answer').attr('data-qid');
+        var page_title = 'ألغاز | لغز '+$('input[name=u_answer').attr('data-qtitle');
+    	window.history.pushState("", "", new_url);
+    	document.title = page_title ;
+		$(document).ready(function() {
+
+		    // process the form
+		    $('#quiz').submit(function(event) {
+
+		    	$('#quiz').append('<img src="/style/img/loader.gif" id="quiz_loading">');
+		    	$('#answer_state').remove();
+
+		        // get the form data
+		        // there are many ways to get this data using jQuery (you can use the class or id also)
+		        
+		        if ($('#quiz input[name=u_answer]').attr('type')==='radio'){
+		        	var u_answer = 	$('input[name=u_answer]:checked').val();}
+		        else {
+		        	var u_answer = 	$('input[name=u_answer]').val();
+		        }
+		        var formData = {
+		            'u_answer'   : u_answer,
+		            'quiz_id'    : $('input[name=u_answer').attr('data-qid')
+		        	}
+		        console.log("this sent quiz_id"+formData.quiz_id);
+
+		        // process the form
+		        $.ajax({
+		            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+		            url         : '/ajax/checkquizanswer', // the url where we want to POST
+		            data        : formData, // our data object
+		            ContentType : 'application/json', // what type of data do we expect back from the server
+		            encode      : true
+		        })
+		            // using the done promise callback
+		            .done(function(data) {
+		                // log data to the console so we can see
+		                //console.log(data); 
+		                // here we will handle errors and validation messages
+		            $('#quiz_loading').remove();
+		            if (data.correct_a===true) {
+		            	$('#quiz').append('<a class="btn btn-success" id="answer_state" href="#"><i class="icon_check_alt2" style="font-size:18px;"></i></a>');
+		            }
+		            else {
+		            	$('#quiz').append('<a class="btn btn-danger" id="answer_state" href="#"><i class="icon_close_alt2" style="font-size:18px;"></i></a>');
+		            }
+		            });
+		        // stop the form from submitting the normal way and refreshing the page
+		        event.preventDefault();
+		    });
+            //var quiz_placeholder = '<header class="panel-heading">لغز : جاري التحميل ...</header><div class="panel-body"><img src="/style/img/loader.gif" id="loading"><p style="text-align:center;"><button id="new_quiz_btn" class="btn btn-lg" style="margin:0px auto;">لغز جديد</button></p></div>'
+            $('#new_quiz_btn').button().click(function(){
+            	$('#new_quiz').append('<img src="/style/img/loader.gif" id="new_q_loading">');
+            	$('#quiz_panel').load('/ajax/randomquiz');
+            	//$('#new_q_loading').remove();
+            	
+            });
+		});
+		</script>
+
+
+
+
+

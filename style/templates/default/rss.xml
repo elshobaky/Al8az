@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://www.al8az.ga/rss</id>
+  <title>ألغاز</title>
+  <link rel="self" href="http://www.al8az.ga/rss" type="application/atom+xml" />
+{% for q in quiz %}
+  <entry>
+    {% if q.title == '' %}
+      <title>{{q.details[:40]}}</title>
+    {% else %}
+      <title>{{q.title}}</title>
+    {% endif %}
+    <category term="ألغاز"/> 
+    <id>http://www.al8az.ga/quiz/{{q.key.id()}}</id>
+    <link href="http://www.al8az.ga/quiz/{{q.key.id()}}"/>
+    <summary>{{q.details[:150]}}</summary>
+    <content>{{q.details}}
+    </content>
+  </entry>
+{% endfor %}
+</feed>
