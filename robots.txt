@@ -1,0 +1,34 @@
+# al8az robots.text file
+User-agent: *
+Disallow: /addquiz
+Disallow: /addquiz/
+Disallow: /editquiz
+Disallow: /editquiz/
+Disallow: /admin/addquiz
+Disallow: /admin/addquiz/
+Disallow: /admin/editquiz
+Disallow: /admin/editquiz/
+Disallow: /admin/addadmin
+Disallow: /addgame
+Disallow: /addgame/
+Disallow: /editgame
+Disallow: /editgame/
+Disallow: /admin/addgame
+Disallow: /admin/addgame/
+Disallow: /admin/editgame
+Disallow: /admin/editgame/
+Disallow: /search/?q=
+Disallow: /search?q=
+Disallow: /randomquiz
+Disallow: /randomquiz/
+Disallow: /test
+Disallow: /test?q_no=
+Disallow: /test/?q_no=
+Disallow: /test/
+Disallow: /style/
+Disallow: /up
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: http://www.al8az.com/rss?n=500&s=0
+Sitemap: http://www.al8az.com/games/rss?n=500&s=0
