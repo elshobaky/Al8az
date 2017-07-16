@@ -1,0 +1,18 @@
+{
+	"site_name" : "ألغاز",
+	"site-description": "متع ذهنك",
+	"copyright_txt" : "ألغاز 2015",
+	"author_name"   : "MelshoX",
+	"en_US" : {
+		"site_name" : "MelshoX",
+		"site-description": "Simple Blog Engine",
+		"copyright_txt" : "MelshoX 2015",
+		"author_name"   : "MelshoX"
+	},
+	"ar_EG" : {
+		"site_name" : "ألغاز",
+		"site-description": "متع ذهنك",
+		"copyright_txt" : "ألغاز 2015",
+		"author_name"   : "MelshoX"
+	}
+}
